@@ -8,5 +8,14 @@
   --color-secondary: oklch(60% 0.1 240);
   --color-base-100: oklch(98% 0.02 240);
   --color-base-200: oklch(95% 0.03 240);
- 
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+* {
+  font-family: 'Outfit', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
