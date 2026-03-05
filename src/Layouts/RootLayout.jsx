@@ -7,7 +7,7 @@ import Banner from '../components/Home/Banner'
 const RootLayout = () => {
   return (
     <div>
-      <Banner></Banner>
+      {/* <Banner></Banner> */}
       <Navbar></Navbar>
       <Outlet></Outlet>
       <Footer></Footer>

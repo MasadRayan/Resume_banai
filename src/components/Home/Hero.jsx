@@ -111,7 +111,7 @@ const Hero = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative py-10 sm:py-10 md:py-20 overflow-hidden">
+      <section className="relative py-10 sm:py-10 md:pt-20 md:pb-16 overflow-hidden">
         {/* Glow blob */}
         <div className="absolute top-28 xl:top-10 -z-10 left-1/4 size-72 sm:size-96 xl:size-120 2xl:size-132 bg-green-300 blur-[100px] opacity-30" />
 
