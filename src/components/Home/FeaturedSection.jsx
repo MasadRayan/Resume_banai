@@ -16,7 +16,7 @@ const FeaturedSection = () => {
   };
 
   return (
-    <div className="flex flex-col items-center scroll-mt-12 mt-20" id="features">
+    <div className="flex flex-col items-center scroll-mt-12 mt-24" id="features">
 
       {/* Badge */}
       <motion.div
