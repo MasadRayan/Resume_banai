@@ -1,8 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
   const navLinks = [
     { name: "Home", link: "/" },
     { name: "Features", link: "#features" },
@@ -10,7 +16,11 @@ const Navbar = () => {
     { name: "Contact", link: "#cta" },
   ];
   return (
-    <div className="pb-20 sticky top-0 z-999">
+    <div className={` sticky top-0 z-999 ${
+          scrolled
+            ? 'bg-white/90 backdrop-blur-md shadow-sm shadow-green-100'
+            : 'bg-transparent'
+        }`}>
       {/* Navbar */}
       <nav className=" flex items-center justify-between w-full py-4 px-6 md:px-16 lg:px-24 xl:px-40 text-sm ">
         {/* Logo */}
@@ -69,7 +79,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 z-100 md:hidden transition-all duration-300 ${
+        className={`fixed inset-0 z-100 md:hidden transition-all duration-300  ${
           menuOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
