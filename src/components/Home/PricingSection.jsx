@@ -1,19 +1,31 @@
 import React from "react";
+import Title from "./Title";
+import { BookUserIcon, Zap } from "lucide-react";
+import { motion } from "framer-motion";
 
 const PricingSection = () => {
   const [isYearly, setIsYearly] = React.useState(false);
+
+  const fadeUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: (i = 0) => ({
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, delay: i * 0.15, ease: "easeOut" },
+    }),
+  };
 
   const pricingData = [
     {
       name: "Free",
       pricing: 0,
       features: [
-        "Static sites only",
-        "1 website",
-        "500 MB SSD storage",
-        "Free SSL Certificate",
-        "Community support",
-        "No custom domain",
+        "Simple Templates",
+        "Limited Customization",
+        "Basic Analytics",
+        "Community Support",
+        "Limited Integrations",
+        "Limited CV Versions",
       ],
     },
     {
@@ -21,58 +33,68 @@ const PricingSection = () => {
       pricing: 19,
       mostPopular: true,
       features: [
-        "Static & dynamic sites",
-        "Unlimited websites",
-        "10 GB SSD storage",
-        "Free SSL Certificate",
-        "Free custom domain",
-        "Email support",
-        "Basic analytics",
+        "All Free features",
+        "Premium Templates",
+        "Advanced Customization",
+        "Detailed Analytics",
+        "Priority Support",
+        "Unlimited Integrations",
+        "Unlimited CV Versions",
       ],
     },
     {
       name: "Enterprise",
       pricing: 49,
       features: [
-        "Static & dynamic sites",
-        "Unlimited websites",
-        "Unlimited SSD storage",
-        "Free SSL Certificate",
-        "Free custom domain",
-        "Priority 24/7 support",
+        "All Pro features",
+        "Custom Template Design",
+        "Dedicated Account Manager",
+        "Team Collaboration",
+        "Advanced Security",
+        "Custom Integrations",
       ],
     },
   ];
 
   return (
     <>
-      <style>
-        {`
-                    @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-                    *{
-                    font-family: "Poppins", sans-serif;
-                }`}
-      </style>
+      <div id="pricing" className="flex flex-col items-center py-16 px-4 mt-16">
+        {/* Badge */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="flex items-center gap-2 text-sm text-green-800 bg-green-400/10 rounded-full px-6 py-1.5"
+        >
+          <BookUserIcon className="size-4.5 stroke-green-600" />
+          <span>Pricing</span>
+        </motion.div>
 
-      <div className="flex flex-col items-center py-16 px-4">
-        <h1 className="text-3xl md:text-4xl text-center mb-3 text-neutral-800">
-          Launch free today. Scale anytime.
-        </h1>
-        <p className="text-neutral-600 text-center mb-8 text-sm">
-          No credit card required. Upgrade only when
-          <br className="hidden md:block" /> you need more.
-        </p>
+        {/* Title */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          custom={1}
+          viewport={{ once: true }}
+        >
+          <Title
+            title="Choose the Plan That Fits Your Needs"
+            description="Whether you're just starting out or need advanced features, we have a plan for you."
+          />
+        </motion.div>
 
-        <div className="relative p-1 bg-white border border-gray-200 rounded-full inline-flex items-center mb-16 w-60">
+        <div className="relative p-1 bg-white border border-gray-200 rounded-full inline-flex items-center mb-10 w-60 mt-10">
           <div
-            className={`absolute -z-10 w-[calc(50%-4px)] h-13.25 rounded-full bg-linear-to-r from-[#FF5804] to-[#FF8D28]/70 transition-transform duration-300 ease-in-out pointer-events-none
+            className={`absolute -z-10 w-[calc(50%-4px)] h-13.25 rounded-full bg-linear-to-r from-green-600 to-green-400 transition-transform duration-300 ease-in-out pointer-events-none
                         ${isYearly ? "translate-x-full" : "translate-x-0"}`}
           ></div>
 
           <button
             onClick={() => setIsYearly(false)}
             className={`relative bg-white z-10 flex-1 py-2.5 cursor-pointer rounded-full text-sm font-medium text-center transition-colors duration-300
-                        ${!isYearly ? "text-[#FF5804]" : "text-gray-500 hover:text-gray-900"}`}
+                        ${!isYearly ? "text-green-600" : "text-gray-500 hover:text-gray-900"}`}
           >
             Monthly
           </button>
@@ -80,7 +102,7 @@ const PricingSection = () => {
           <button
             onClick={() => setIsYearly(true)}
             className={`relative z-10 flex-1 py-2.5 cursor-pointer rounded-full text-sm font-medium text-center flex items-center justify-center gap-1 transition-colors duration-300
-                        ${isYearly ? "text-[#FF5804]" : "text-gray-500 hover:text-gray-900"}`}
+                        ${isYearly ? "text-green-600" : "text-gray-500 hover:text-gray-900"}`}
           >
             Yearly
             <span className="text-xs">15% off</span>
@@ -94,12 +116,12 @@ const PricingSection = () => {
               key={index}
               className={
                 plan.mostPopular
-                  ? "bg-linear-to-r from-[#FF861C] to-[#FFDBC4] rounded-3xl p-2 shadow-xl hover:shadow-lg transition-shadow"
+                  ? "bg-linear-to-r from-green-600 to-green-200 rounded-3xl p-2 shadow-xl hover:shadow-lg transition-shadow"
                   : ""
               }
             >
               {plan.mostPopular && (
-                <p className="text-center text-orange-700 text-sm py-1.5">
+                <p className="text-center text-green-700 text-sm py-1.5">
                   Popular
                 </p>
               )}
@@ -141,7 +163,7 @@ const PricingSection = () => {
                     </li>
                   ))}
                 </ul>
-                <button className="w-full cursor-pointer py-3 rounded-full bg-linear-to-r from-[#FF5804] to-[#FF8D28]/70 text-white text-sm hover:opacity-95 transition-opacity">
+                <button className="w-full cursor-pointer py-3 rounded-full bg-linear-to-r from-green-500 to-green-300 text-white text-sm hover:opacity-95 transition-opacity">
                   Get started
                 </button>
               </div>
