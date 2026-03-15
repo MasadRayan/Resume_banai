@@ -4,6 +4,7 @@ import FeaturedSection from '../components/Home/FeaturedSection';
 import Testimonial from '../components/Home/Testimonial';
 import CTASection from '../components/Home/CTASection';
 import FAQ from '../components/Home/FAQ';
+import PricingSection from '../components/Home/PricingSection';
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       <Hero></Hero>
       <FeaturedSection></FeaturedSection>
       <Testimonial></Testimonial>
+      <PricingSection></PricingSection>
       <FAQ></FAQ>
       <CTASection></CTASection>
     </div>
